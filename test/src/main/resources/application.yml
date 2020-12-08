@@ -1,0 +1,17 @@
+server:
+  port: 8088
+  servlet:
+    context-path: /live
+
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/live
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  profiles:
+    active: dev
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署

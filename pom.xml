@@ -14,35 +14,40 @@
     <packaging>pom</packaging>
     <name>live</name>
     <description>Demo project for Spring Boot</description>
-
+    <properties>
+        <java.version>1.8</java.version>
+        <live.version>0.0.1-SNAPSHOT</live.version>
+    </properties>
     <modules>
+        <module>common</module>
+        <module>service</module>
+        <module>impl</module>
         <module>test</module>
     </modules>
 
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>cn.huang</groupId>
+                <artifactId>common</artifactId>
+                <version>${live.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.huang</groupId>
+                <artifactId>service</artifactId>
+                <version>${live.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.huang</groupId>
+                <artifactId>impl</artifactId>
+                <version>${live.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.huang</groupId>
+                <artifactId>service</artifactId>
+                <version>${live.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>

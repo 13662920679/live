@@ -33,6 +33,10 @@
             <groupId>cn.huang</groupId>
             <artifactId>service</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.huang</groupId>
+            <artifactId>dao</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

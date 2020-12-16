@@ -24,9 +24,9 @@ public class SysUserController {
     @ApiOperation("用户注册")
     @PostMapping("/reg")
     public ResponseEntity reg(@RequestBody SysUserEntity entity){
-        int reg = sysUserService.reg(entity);
         entity.setId(IdUtil.createId());
         entity.setCreateTime(new Date());
+        int reg = sysUserService.reg(entity);
         return reg==1?ResponseEntity.ok("注册成功"):null;
     }
 

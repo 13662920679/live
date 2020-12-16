@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.huang</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>dao</artifactId>
         </dependency>
     </dependencies>
 

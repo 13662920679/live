@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册界面</title>
+
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+    <script src="js/util.js"></script>
+
+    <!--MD5加密-->
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+</head>
+<body>
+    <h5>注册</h5>
+    用户名&nbsp;&nbsp;：<input id="username" type="text" name="username"><br>
+    密码&nbsp;&nbsp;&nbsp;&nbsp;：<input id="password" type="password" name="password"><br>
+    确认密码：<input id="surePassword" type="password" name="surePassword"><br>
+    <button type="button" onclick="reg()">注册</button>
+</body>
+
+<script>
+    function reg() {
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var surePassword = $("#surePassword").val();
+        var md5Password = md5(password);
+        var md5SurePassword = md5(surePassword);
+        if (isEmpty(username) || isEmpty(password) || isEmpty(surePassword)){
+            alert("请填写完整");
+        }else {
+            if (md5Password === md5SurePassword) {
+                $.ajax({
+                    url: "/live/sys/user/reg",
+                    type: "POST",//注意大写
+                    data: JSON.stringify({
+                        username: username,
+                        password: md5SurePassword
+                    }),
+                    dataType: "json",
+                    contentType: "application/json",
+                    statusCode: {
+                        200: function (result) {
+                            alert(result.responseText);
+                        },
+                        400: function (result) {
+                            alert(result.responseText);
+                        }
+                    }
+                })
+            } else {
+                alert("密码不一致或为空");
+            }
+        }
+    }
+
+
+</script>
+</html>

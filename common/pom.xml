@@ -43,7 +43,7 @@
         </dependency>
         <dependency>
             <groupId>cn.huang</groupId>
-            <artifactId>service</artifactId>
+            <artifactId>pojo</artifactId>
         </dependency>
     </dependencies>
 

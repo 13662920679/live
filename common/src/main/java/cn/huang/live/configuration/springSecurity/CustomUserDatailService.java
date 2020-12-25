@@ -21,12 +21,13 @@ public class CustomUserDatailService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 //        RoleUser roleUser = roleUserService.getRoleUserByUsername(username);
-//        List<GrantedAuthority> authorityList = AuthorityUtils.createAuthorityList("ROLE_"+roleUser.getRole());//可多个Role
+//        List<GrantedAuthority> authorityList = new ArrayList<>();
+        List<GrantedAuthority> authorityList = AuthorityUtils.createAuthorityList("ROLE_"+"AAA");//可多个Role
 //        /* 注意要添加"ROLE_"作为前缀
 //         *   因为数据库存储的是没有前缀的
 //         * 角色必须以`ROLE_`开头，数据库中没有，则在这里加；有则不用加
 //         *  */
 //        return new User(username,roleUser.getPassword(),authorityList);
-        return new User("1","1",new ArrayList<>());
+        return new User("1","1",authorityList);
     }
 }

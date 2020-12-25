@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @SpringBootConfiguration
-@ComponentScan(basePackages = {"cn.huang.live.api","cn.huang.live.configuration"})
+@ComponentScan(basePackages = {"cn.huang.live.impl","cn.huang.live.configuration","cn.huang.live.testController"})
 @MapperScan(basePackages = {"cn.huang.live.mapper"})
 public class TestApplication {
 

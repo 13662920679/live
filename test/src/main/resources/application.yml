@@ -7,7 +7,7 @@ spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://localhost:3306/live
+    url: jdbc:mysql://localhost:3306/live?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
 #    driver-class-name: com.mysql.cj.jdbc.Driver  # mysql5.0+
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
@@ -16,7 +16,7 @@ spring:
     active: dev
   devtools:
     restart:
-      enabled: true  # 设置开启热部署
+      enabled: true
 
 mybatis:
   type-aliases-package: cn.huang.live.pojo

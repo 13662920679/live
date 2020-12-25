@@ -6,26 +6,25 @@
         <artifactId>live</artifactId>
         <groupId>cn.huang</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
 
+    <artifactId>pojo</artifactId>
     <dependencies>
         <dependency>
-            <groupId>cn.huang</groupId>
-            <artifactId>dao</artifactId>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.72</version>
         </dependency>
         <dependency>
-            <groupId>cn.huang</groupId>
-            <artifactId>pojo</artifactId>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
+
 
 </project>

@@ -21,9 +21,9 @@
     <modules>
         <module>common</module>
         <module>service</module>
-        <module>impl</module>
         <module>test</module>
         <module>dao</module>
+        <module>pojo</module>
     </modules>
 
     <dependencyManagement>
@@ -40,17 +40,12 @@
             </dependency>
             <dependency>
                 <groupId>cn.huang</groupId>
-                <artifactId>impl</artifactId>
-                <version>${live.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.huang</groupId>
-                <artifactId>service</artifactId>
-                <version>${live.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.huang</groupId>
                 <artifactId>dao</artifactId>
+                <version>${live.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.huang</groupId>
+                <artifactId>pojo</artifactId>
                 <version>${live.version}</version>
             </dependency>
             <dependency>

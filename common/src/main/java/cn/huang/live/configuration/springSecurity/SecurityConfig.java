@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -49,6 +50,43 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationProvider(daoAuthenticationProvider())
 //                .userDetailsService(customUserDatailService)
 //                .passwordEncoder(passwordEncoder())
+        ;
+    }
+
+    //  拦截
+    @Override
+    protected void configure(HttpSecurity http) throws Exception{
+        http
+                .exceptionHandling()//异常处理(huang:未使用authenticationEntryPoint的话(下面)，未认证过的用户(匿名)会跳到默认的spring security 登录页面)
+//                .authenticationEntryPoint(customAuthenticationEntryPoint)//(未登录前)用来解决匿名用户访问无权限资源时的异常;自定义AuthenticationEntryPoint的实现类
+//                .accessDeniedHandler(customAccessDeineHandler)//用来解决认证过的用户访问无权限资源时的异常;自定义AccessDeniedHandler的实现类
+                .and()
+                .authorizeRequests()
+                .antMatchers("/index").permitAll()//任何用户都可以访问
+                .antMatchers("/login/**").hasRole("ADMIN")//拥有 ADMIN 可以访问
+                .antMatchers("/admin/**").hasAnyRole("ADMIN","SUPER")//拥有 ADMIN 或 SUPER 可以访问
+//                .antMatchers("/huang").access("hasRole('ADMIN') and hasRole('SUPER')")//拥有 ADMIN 且 SUPER 可以访问
+                .anyRequest().permitAll()//其他没有限定的请求，允许访问
+//                .anyRequest().authenticated()//任何没有匹配上的其他的url请求，只需要用户被验证
+                .and()
+//            .anonymous()
+//                .and()
+                .formLogin()//允许用户进行基于表单的认证 ; 默认使用 spring security 登录页面
+//                .failureHandler(myAuthenticationFailHandler)//自定义登录失败操作
+//                .successHandler(authenticationSuccessHandler())
+                .and()
+                .httpBasic()//允许用户使用HTTP基于验证进行认证
+                .and()
+                .logout()
+                .logoutUrl("/logout")// 默认是/logout
+                .logoutSuccessUrl("/index")//默认是login?logout
+//                .logoutSuccessHandler(logoutSuccessHandler)//设置定制的 LogoutSuccessHandler。如果指定了这个选项那么logoutSuccessUrl()的设置会被忽略
+                .invalidateHttpSession(true)//指定是否在注销时让HttpSession无效。 默认设置为 true。
+//                .addLogoutHandler(logoutHandler)
+//                .deleteCookies(cookieNamesToClear)
+                .and()
+                .csrf().disable()//防止csdf攻击
+                .sessionManagement().disable()  //禁用session
         ;
     }
 

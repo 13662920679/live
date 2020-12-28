@@ -14,13 +14,6 @@
     <packaging>jar</packaging>
 
     <dependencies>
-        <!-- lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.16.10</version>
-            <scope>provided</scope>
-        </dependency>
         <!-- Spring Security 依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
